@@ -25,3 +25,9 @@ Examples
     42.bencode                          # => "i42e"
     [1, 2, 3].bencode                   # => "li1ei2ei3ee"
     {"foo" => 1, "bar" => -10}.bencode  # => "d3:bari-10e3:fooi1ee"
+
+
+License
+-------
+
+Released under the MIT license.
