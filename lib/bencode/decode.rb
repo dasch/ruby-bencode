@@ -18,7 +18,11 @@ module BEncode
 
     # Bdecodes the file located at +path+
     def load_file(path)
-      load(File.open(path).read)
+      if RUBY_PLATFORM =~ /(win|w)32$/
+        load(File.open(path, 'rb').read)
+      else
+        load(File.open(path).read)
+      end
     end
 
     def parse(scanner) # :nodoc:
