@@ -31,3 +31,9 @@ License
 -------
 
 Released under the MIT license.
+
+
+Contributors
+------------
+
+- Mike Hodgson
