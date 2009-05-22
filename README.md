@@ -12,10 +12,11 @@ Bencode is a simple data serialization format used by the popular
 [BitTorrent](http://bittorrent.org/) P2P file sharing system.
 
 It contains only four data types, namely:
- - byte strings
- - integers
- - lists
- - dictionaries
+
+- byte strings
+- integers
+- lists
+- dictionaries
 
 
 Examples
@@ -31,3 +32,9 @@ License
 -------
 
 Released under the MIT license.
+
+
+Contributors
+------------
+
+- Mike Hodgson
