@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "bencode"
-  s.version = "0.5.0"
+  s.version = "0.5.1"
   s.summary = "Ruby bencode bindings"
   s.email = "daniel.schierbeck@gmail.com"
   s.homepage = "http://github.com/dasch/ruby-bencode-bindings"
