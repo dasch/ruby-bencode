@@ -37,4 +37,5 @@ Released under the MIT license.
 Contributors
 ------------
 
+- Daniel Schierbeck
 - Mike Hodgson
