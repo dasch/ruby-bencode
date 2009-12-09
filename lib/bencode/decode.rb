@@ -1,3 +1,4 @@
+require 'strscan'
 
 module BEncode
   class << self
@@ -8,8 +9,6 @@ module BEncode
 
     # Bdecodes +str+
     def load(str)
-      require 'strscan'
-
       scanner = StringScanner.new(str)
       obj = parse(scanner)
       raise BEncode::DecodeError unless scanner.eos?
@@ -26,37 +25,38 @@ module BEncode
     end
 
     def parse(scanner) # :nodoc:
-      case scanner.scan(/[ild]|\d+:/)
-      when "i"
-        number = scanner.scan(/0|(?:-?[1-9][0-9]*)/)
-        raise BEncode::DecodeError unless number and scanner.scan(/e/)
-        return number.to_i
-      when "l"
-        ary = []
-        # TODO: There must be a smarter way of doing this...
-        ary.push(parse(scanner)) until scanner.peek(1) == "e"
+      case scanner.peek(1)[0]
+      when ?i
         scanner.pos += 1
+        num = scanner.scan_until(/e/) or raise BEncode::DecodeError
+        return Integer(num.chop)
+      when ?l
+        scanner.pos += 1
+        ary = []
+        ary.push(parse(scanner)) until scanner.scan(/e/)
         return ary
-      when "d"
+      when ?d
+        scanner.pos += 1
         hsh = {}
-        until scanner.peek(1) == "e"
-          key, value = parse(scanner), parse(scanner)
+        until scanner.scan(/e/)
+          key = parse(scanner)
 
-          unless key.is_a? String
-            raise BEncode::DecodeError, "key must be a string"
+          unless key.is_a? String or key.is_a? Fixnum
+            raise BEncode::DecodeError, "key must be a string or number"
           end
 
-          hsh.store(key, value)
+          hsh.store(key.to_s, parse(scanner))
         end
-        scanner.pos += 1
         return hsh
-      when /\d+:/
-        length = Integer($~.string.chop)
-        str = scanner.peek(length)
+      when ?0 .. ?9
+        num = scanner.scan_until(/:/) or
+           raise BEncode::DecodeError, "invalid string length (no colon)"
 
         begin
+          length = Integer(num.chop)
+          str = scanner.peek(length)
           scanner.pos += length
-        rescue RangeError
+        rescue
           raise BEncode::DecodeError, "invalid string length"
         end
 
