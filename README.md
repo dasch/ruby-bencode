@@ -39,3 +39,4 @@ Contributors
 
 - Daniel Schierbeck
 - Mike Hodgson
+- Andrew Danforth
