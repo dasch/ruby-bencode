@@ -1,8 +1,7 @@
 
-require 'test/unit'
 require 'test/environment'
 
-class TestDecodeUTF8 < Test::Unit::TestCase
+class UTF8DecodingTest < Test::Unit::TestCase
 
   def test_can_handle_utf8_encoded_data
     assert_nothing_raised do
