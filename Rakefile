@@ -2,8 +2,9 @@
 require 'rake/testtask'
 require 'rake/rdoctask'
 
-##
-# Run all unit tests.
+task :default => :test
+
+desc "Run all unit tests"
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
   test.pattern = 'test/**/*_test.rb'
@@ -11,14 +12,12 @@ Rake::TestTask.new(:test) do |test|
 end
 
 
-##
-# Generate RDoc documentation.
+desc "Generate RDoc documentation"
 Rake::RDocTask.new :doc do |rdoc|
   rdoc.rdoc_dir = 'doc'
 end
 
-##
-# Run all the benchmarks.
+desc "Run all the benchmarks"
 task :benchmark do
   Dir["test/benchmark/*.rb"].each do |file|
     puts ">> Running #{file}"
