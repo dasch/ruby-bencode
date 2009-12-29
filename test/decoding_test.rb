@@ -2,11 +2,14 @@
 require 'test/environment'
 
 class DecodingTest < Test::Unit::TestCase
-  def test_valid_integer_decoding
-    assert_equal 42, BEncode.load("i42e")
-  end
+  context "The BEncode decoder" do
+    should_decode 42, "i42e"
+    should_decode 0, "i0e"
+    should_decode -42, "i-42e"
 
-  def test_valid_string_decoding
-    assert_equal "foo", BEncode.load("3:foo")
+    should_decode "foo", "3:foo"
+    should_decode "", "0:"
+
+    should_decode [1, 2, 3], "li1ei2ei3ee"
   end
 end
