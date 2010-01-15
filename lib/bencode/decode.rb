@@ -62,7 +62,7 @@ module BEncode
 
         return str
       else
-        raise BEncode::DecodeError
+        raise BEncode::DecodeError, "Invalid specifier #{scanner.peek(1).inspect} at position #{scanner.pos+1}"
       end
     end
 
