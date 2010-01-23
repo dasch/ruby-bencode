@@ -8,5 +8,5 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
   s.authors = ["Daniel Schierbeck"]
   s.files = ['Rakefile', 'LICENSE', 'README.md', 'lib/bencode.rb', 'lib/bencode/decode.rb', 'lib/bencode/decode_error.rb', 'lib/bencode/encode_error.rb', 'lib/bencode/io.rb', 'lib/bencode/encode/array.rb', 'lib/bencode/encode/integer.rb', 'lib/bencode/encode/string.rb', 'lib/bencode/encode/hash.rb', 'lib/bencode/encode/object.rb']
-  s.test_files = ['test/test_decode_utf8.rb', 'test/environment.rb', 'test/fixtures/test.torrent']
+  s.test_files = ['test/utf8_decoding_test.rb', 'test/environment.rb', 'test/fixtures/test.torrent']
 end
