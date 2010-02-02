@@ -1,4 +1,3 @@
-# encoding: UTF-8
 
 class IO
   def self.bdecode(filename)
