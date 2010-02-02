@@ -1,11 +1,12 @@
+# encoding: UTF-8
 
 class IO
   def self.bdecode(filename)
-    open(filename, 'r').bdecode
+    open(filename, 'rb') {|io| io.bdecode}
   end
 
   def self.bencode(filename)
-    open(filename, 'r').bencode
+    open(filename, 'rb') {|io| io.bencode}
   end
 
   def bdecode

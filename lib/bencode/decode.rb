@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'strscan'
 
 module BEncode
@@ -17,11 +19,7 @@ module BEncode
 
     # Bdecodes the file located at +path+
     def load_file(path)
-      if RUBY_PLATFORM =~ /(win|w)32$/
-        load(File.open(path, 'rb').read)
-      else
-        load(File.open(path).read)
-      end
+      load(File.open(path, 'rb') {|f| f.read})
     end
 
     def parse(scanner) # :nodoc:
