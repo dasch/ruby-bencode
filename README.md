@@ -46,3 +46,4 @@ Contributors
 - Mike Hodgson
 - Andrew Danforth
 - Eric Himmelreich
+- Allen Madsen
