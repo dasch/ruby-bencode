@@ -25,3 +25,18 @@ task :benchmark do
     puts
   end
 end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "bencode"
+    gem.summary = "Encode and decode bencoded data"
+    gem.description = "A simple encoder and decoder for the BitTorrent serialization format."
+    gem.email = "daniel.schierbeck@gmail.com"
+    gem.homepage = "http://github.com/dasch/ruby-bencode"
+    gem.authors = ["Daniel Schierbeck"]
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
+end
