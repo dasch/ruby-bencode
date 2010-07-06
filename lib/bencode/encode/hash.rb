@@ -8,7 +8,7 @@ class Hash
   # be in lexicographical order.
   def bencode
     pairs = sort.map{|key, val| [key.to_str.bencode, val.bencode] }
-    "d#{pairs.join('')}e"
+    "d#{pairs.join}e"
   rescue NoMethodError => error
     raise BEncode::EncodeError, "dictionary keys must be strings"
   end

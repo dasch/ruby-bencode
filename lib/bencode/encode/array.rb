@@ -8,7 +8,7 @@ class Array
   #
   def bencode
     begin
-      "l#{map{|obj| obj.bencode }.join('')}e"
+      "l#{map{|obj| obj.bencode }.join}e"
     rescue BEncode::EncodeError
       raise BEncode::EncodeError, "array items must be encodable"
     end
