@@ -22,6 +22,8 @@ module BEncode
     load(File.open(path, ext).read)
   end
 
+  private
+
   def self.parse(scanner) # :nodoc:
     case scanner.peek(1)[0]
     when ?i
@@ -64,7 +66,6 @@ module BEncode
     end
   end
 
-  private :parse
 end
 
 class String
