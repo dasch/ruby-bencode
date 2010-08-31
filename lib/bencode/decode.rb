@@ -17,9 +17,7 @@ module BEncode
 
   # Bdecodes the file located at +path+
   def self.load_file(path)
-    ext = RUBY_PLATFORM =~ /(win|w)32$/ ? 'rb' : 'r'
-
-    load(File.open(path, ext).read)
+    load(File.open(path, 'rb').read)
   end
 
   private
