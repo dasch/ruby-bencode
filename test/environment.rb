@@ -1,5 +1,9 @@
 
 require 'rubygems'
+require 'bundler/setup'
+
+Bundler.require(:test)
+
 require 'test/unit'
 require 'shoulda'
 require File.dirname(__FILE__) + '/../lib/bencode'
