@@ -6,9 +6,8 @@ module BEncode
 
   class EncodeError < StandardError
   end
-
 end
 
 glob = File.join(File.dirname(__FILE__), 'bencode/**/*.rb')
 
-Dir[glob].sort.each{|file| require file }
+Dir[glob].sort.each {|file| require file }
