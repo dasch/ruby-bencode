@@ -1,7 +1,7 @@
 
 require 'test/environment'
 
-class DecodingTest < Test::Unit::TestCase
+class DecodingTest < MiniTest::Unit::TestCase
   context "The BEncode decoder" do
     should_decode 42, "i42e"
     should_decode 0, "i0e"

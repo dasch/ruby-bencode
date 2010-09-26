@@ -1,5 +1,6 @@
 source "http://rubygems.org"
 
 group :test do
-  gem "shoulda", "~> 2.11"
+  gem "minitest", :require => "minitest/unit"
+  gem "shoulda", :git => "git://github.com/dasch/shoulda.git", :branch => "minitest"
 end
