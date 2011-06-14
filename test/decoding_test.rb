@@ -12,6 +12,6 @@ class DecodingTest < MiniTest::Unit::TestCase
 
     should_decode [1, 2, 3], "li1ei2ei3ee"
     
-    should_decode 42, "i42eBOGUS", :ignore_trailer => true
+    should_decode 42, "i42eBOGUS", :ignore_trailing_junk => true
   end
 end

@@ -11,7 +11,7 @@ module BEncode
   def self.load(str, opts = {})
     scanner = StringScanner.new(str)
     obj = parse(scanner)
-    raise BEncode::DecodeError unless (opts[:ignore_trailer] || scanner.eos?)
+    raise BEncode::DecodeError unless (opts[:ignore_trailing_junk] || scanner.eos?)
     return obj
   end
 
