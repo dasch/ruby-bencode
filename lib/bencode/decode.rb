@@ -8,16 +8,16 @@ module BEncode
   end
 
   # Bdecodes +str+
-  def self.load(str)
+  def self.load(str, opts = {})
     scanner = StringScanner.new(str)
     obj = parse(scanner)
-    raise BEncode::DecodeError unless scanner.eos?
+    raise BEncode::DecodeError unless (opts[:ignore_trailer] || scanner.eos?)
     return obj
   end
 
   # Bdecodes the file located at +path+
-  def self.load_file(path)
-    load(File.open(path, 'rb').read)
+  def self.load_file(path, opts = {})
+    load(File.open(path, 'rb').read, opts)
   end
 
   private
