@@ -42,8 +42,9 @@ Released under the MIT license.
 Contributors
 ------------
 
-- Daniel Schierbeck
-- Mike Hodgson
+- Daniel Schierbeck ([dasch](https://github.com/dasch))
+- Mike Hodgson ([mikehodgson](https://github.com/mikehodgson))
 - Andrew Danforth
 - Eric Himmelreich
-- Allen Madsen
+- Allen Madsen ([blatyo](https://github.com/blatyo))
+- Ian Levesque ([ianlevesque](https://github.com/ianlevesque))
