@@ -2,3 +2,4 @@ doc
 *.gem
 .idea
 Gemfile.lock
+.yardoc

@@ -1,5 +1,7 @@
 
-# TODO: Write some documentation here.
+# Support for loading and dumping bencoded data.
+#
+# See {BEncode.load} and {BEncode.dump}.
 module BEncode
   class DecodeError < StandardError
   end
