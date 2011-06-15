@@ -1,0 +1,5 @@
+--no-private
+--title "BEncode Documentation"
+--readme README.md
+lib/**/*.rb -
+LICENSE
