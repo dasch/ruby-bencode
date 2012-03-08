@@ -1,5 +1,4 @@
-
-require 'test/environment'
+require 'environment'
 
 class DecodingTest < MiniTest::Unit::TestCase
   context "The BEncode decoder" do

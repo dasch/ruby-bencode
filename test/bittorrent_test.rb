@@ -1,6 +1,4 @@
-
-require 'test/environment'
-
+require 'environment'
 
 class BitTorrentTest < MiniTest::Unit::TestCase
   should "load a bencoded torrent file" do
