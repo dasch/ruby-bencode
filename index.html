@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>bencode by dasch</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>bencode</h1>
+        <p>Ruby bindings for the bencode data serialization format</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/dasch/ruby-bencode" class="button fork"><strong>Fork On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/dasch/ruby-bencode/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/dasch/ruby-bencode/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>Ruby bencode binding</h1>
+
+<p>This is a simple library for reading and writing bencoded data.</p>
+
+<h2>What is bencode?</h2>
+
+<p>Bencode is a simple data serialization format used by the popular 
+<a href="http://bittorrent.org/">BitTorrent</a> P2P file sharing system.</p>
+
+<p>It contains only four data types, namely:</p>
+
+<ul>
+<li>byte strings</li>
+<li>integers</li>
+<li>lists</li>
+<li>dictionaries</li>
+</ul><h2>Examples</h2>
+
+<p>Encoding objects is as simple as calling <code>#bencode</code> on them:</p>
+
+<div class="highlight">
+<pre><span class="s2">"foo bar"</span><span class="o">.</span><span class="n">bencode</span>                   <span class="c1"># =&gt; "7:foo bar"</span>
+<span class="mi">42</span><span class="o">.</span><span class="n">bencode</span>                          <span class="c1"># =&gt; "i42e"</span>
+<span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">].</span><span class="n">bencode</span>                   <span class="c1"># =&gt; "li1ei2ei3ee"</span>
+<span class="p">{</span><span class="s2">"foo"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"bar"</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">10</span><span class="p">}</span><span class="o">.</span><span class="n">bencode</span>  <span class="c1"># =&gt; "d3:bari-10e3:fooi1ee"</span>
+</pre>
+</div>
+
+
+<p>Decoding a data stream is as easy as calling <code>BEncode.load(data)</code>.</p>
+
+<h2>License</h2>
+
+<p>Released under the MIT license.</p>
+
+<h2>Contributors</h2>
+
+<ul>
+<li>Daniel Schierbeck (<a href="/dasch" class="user-mention">@dasch</a>)</li>
+<li>Mike Hodgson (<a href="/mikehodgson" class="user-mention">@mikehodgson</a>)</li>
+<li>Andrew Danforth</li>
+<li>Eric Himmelreich</li>
+<li>Allen Madsen (<a href="/blatyo" class="user-mention">@blatyo</a>)</li>
+<li>Ian Levesque (<a href="/ianlevesque" class="user-mention">@ianlevesque</a>)</li>
+</ul>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/dasch">dasch</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
