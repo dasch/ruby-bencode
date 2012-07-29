@@ -1,5 +1,7 @@
 source "http://rubygems.org"
 
+  gem "jeweler"
+  
 group :test do
   gem "rake"
   gem "minitest", :require => "minitest/unit"

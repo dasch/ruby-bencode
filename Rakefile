@@ -1,6 +1,6 @@
-
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rdoc/task'
+require 'jeweler'
 
 task :default => :test
 
