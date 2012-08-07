@@ -3,6 +3,8 @@
 #
 # See {BEncode.load} and {BEncode.dump}.
 module BEncode
+  VERSION = "0.7.0"
+
   class DecodeError < StandardError
   end
 
