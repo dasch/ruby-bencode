@@ -1,5 +1,9 @@
 source "http://rubygems.org"
 
+group :development do
+  gem "rdoc"
+end
+
 group :test do
   gem "rake"
   gem "minitest", :require => "minitest/unit"
