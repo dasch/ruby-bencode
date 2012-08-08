@@ -1,4 +1,3 @@
-
 Ruby bencode binding
 ====================
 
@@ -24,11 +23,12 @@ Examples
 
 Encoding objects is as simple as calling `#bencode` on them:
 
-    "foo bar".bencode                   # => "7:foo bar"
-    42.bencode                          # => "i42e"
-    [1, 2, 3].bencode                   # => "li1ei2ei3ee"
-    {"foo" => 1, "bar" => -10}.bencode  # => "d3:bari-10e3:fooi1ee"
-
+```ruby
+"foo bar".bencode                   # => "7:foo bar"
+42.bencode                          # => "i42e"
+[1, 2, 3].bencode                   # => "li1ei2ei3ee"
+{"foo" => 1, "bar" => -10}.bencode  # => "d3:bari-10e3:fooi1ee"
+```
 
 Decoding a data stream is as easy as calling `BEncode.load(data)`.
 
