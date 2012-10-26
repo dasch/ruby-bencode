@@ -7,11 +7,14 @@ module BEncode
     end
 
     def self.parse(scanner)
-      new(scanner).parse!
+      val = new(scanner).parse!
+
+      raise BEncode::DecodeError if val.nil?
+
+      return val
     end
 
     def parse!
-      val = \
       case scanner.peek(1)[0]
       when ?i
         parse_integer!
@@ -22,10 +25,6 @@ module BEncode
       when ?0 .. ?9
         parse_string!
       end
-
-      raise BEncode::DecodeError if val.nil?
-
-      val
     end
 
     private
