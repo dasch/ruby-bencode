@@ -20,7 +20,7 @@ module BEncode
   # @raise [DecodeError] if +str+ is malformed
   def self.load(str, opts = {})
     scanner = StringScanner.new(str)
-    obj = parse(scanner)
+    obj = BEncode::Parser.parse(scanner)
     raise BEncode::DecodeError unless (opts[:ignore_trailing_junk] || scanner.eos?)
     return obj
   end
@@ -33,54 +33,6 @@ module BEncode
   def self.load_file(path, opts = {})
     load(File.open(path, 'rb').read, opts)
   end
-
-  private
-
-  def self.parse(scanner) # :nodoc:
-    val = \
-    case scanner.peek(1)[0]
-    when ?i
-      scanner.pos += 1
-      num = scanner.scan_until(/e/) or raise BEncode::DecodeError
-      num.chop.to_i
-    when ?l
-      scanner.pos += 1
-      ary = []
-      ary.push(parse(scanner)) until scanner.scan(/e/)
-      ary
-    when ?d
-      scanner.pos += 1
-      hsh = {}
-      until scanner.scan(/e/)
-        key = parse(scanner)
-
-        unless key.is_a? String or key.is_a? Fixnum
-          raise BEncode::DecodeError, "key must be a string or number"
-        end
-
-        hsh.store(key.to_s, parse(scanner))
-      end
-      hsh
-    when ?0 .. ?9
-      num = scanner.scan_until(/:/) or
-        raise BEncode::DecodeError, "invalid string length (no colon)"
-
-      begin
-        length = num.chop.to_i
-        str = scanner.peek(length)
-        scanner.pos += num.chop.to_i
-      rescue
-        raise BEncode::DecodeError, "invalid string length"
-      end
-
-      str
-    end
-
-    raise BEncode::DecodeError if val.nil?
-
-    val
-  end
-
 end
 
 class String
