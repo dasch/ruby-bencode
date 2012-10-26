@@ -16,14 +16,10 @@ module BEncode
 
     def parse!
       case scanner.peek(1)[0]
-      when ?i
-        parse_integer!
-      when ?l
-        parse_list!
-      when ?d
-        parse_dict!
-      when ?0 .. ?9
-        parse_string!
+        when ?i then parse_integer!
+        when ?l then parse_list!
+        when ?d then parse_dict!
+        when ?0 .. ?9 then parse_string!
       end
     end
 
