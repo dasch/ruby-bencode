@@ -14,45 +14,63 @@ module BEncode
       val = \
       case scanner.peek(1)[0]
       when ?i
-        scanner.pos += 1
-        num = scanner.scan_until(/e/) or raise BEncode::DecodeError
-        num.chop.to_i
+        parse_integer!
       when ?l
-        scanner.pos += 1
-        ary = []
-        ary.push(parse!) until scanner.scan(/e/)
-        ary
+        parse_list!
       when ?d
-        scanner.pos += 1
-        hsh = {}
-        until scanner.scan(/e/)
-          key = parse!
-
-          unless key.is_a? String or key.is_a? Fixnum
-            raise BEncode::DecodeError, "key must be a string or number"
-          end
-
-          hsh.store(key.to_s, parse!)
-        end
-        hsh
+        parse_dict!
       when ?0 .. ?9
-        num = scanner.scan_until(/:/) or
-          raise BEncode::DecodeError, "invalid string length (no colon)"
-
-        begin
-          length = num.chop.to_i
-          str = scanner.peek(length)
-          scanner.pos += num.chop.to_i
-        rescue
-          raise BEncode::DecodeError, "invalid string length"
-        end
-
-        str
+        parse_string!
       end
 
       raise BEncode::DecodeError if val.nil?
 
       val
+    end
+
+    private
+
+    def parse_integer!
+      scanner.pos += 1
+      num = scanner.scan_until(/e/) or raise BEncode::DecodeError
+      num.chop.to_i
+    end
+
+    def parse_list!
+      scanner.pos += 1
+      ary = []
+      ary.push(parse!) until scanner.scan(/e/)
+      ary
+    end
+
+    def parse_dict!
+      scanner.pos += 1
+      hsh = {}
+      until scanner.scan(/e/)
+        key = parse!
+
+        unless key.is_a? String or key.is_a? Fixnum
+          raise BEncode::DecodeError, "key must be a string or number"
+        end
+
+        hsh.store(key.to_s, parse!)
+      end
+      hsh
+    end
+
+    def parse_string!
+      num = scanner.scan_until(/:/) or
+        raise BEncode::DecodeError, "invalid string length (no colon)"
+
+      begin
+        length = num.chop.to_i
+        str = scanner.peek(length)
+        scanner.pos += num.chop.to_i
+      rescue
+        raise BEncode::DecodeError, "invalid string length"
+      end
+
+      str
     end
   end
 end
