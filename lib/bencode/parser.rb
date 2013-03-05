@@ -38,7 +38,7 @@ module BEncode
     def parse_list!
       stream.getc
       ary = []
-      ary.push(parse!) until stream.peek == 'e'
+      ary.push(parse!) until stream.peek == ?e
       stream.getc
       ary
     end
@@ -46,14 +46,16 @@ module BEncode
     def parse_dict!
       stream.getc
       hsh = {}
-      until stream.peek == 'e'
+      until stream.peek == ?e
         key = parse!
 
         unless key.is_a? String or key.is_a? Fixnum
           raise BEncode::DecodeError, "key must be a string or number"
         end
+          
+        val = parse!
 
-        hsh.store(key.to_s, parse!)
+        hsh.store(key.to_s, val)
       end
       stream.getc
       hsh
