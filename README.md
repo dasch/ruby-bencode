@@ -58,3 +58,4 @@ Contributors
 - Eric Himmelreich
 - Allen Madsen ([blatyo](https://github.com/blatyo))
 - Ian Levesque ([ianlevesque](https://github.com/ianlevesque))
+- Dirk Geurs ([Dirklectisch](https://github.com/Dirklectisch))
