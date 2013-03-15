@@ -1,11 +1,12 @@
 require 'stringio'
+require 'bencode/parseio'
 
 module BEncode
   class Parser
     attr_reader :stream
 
     def initialize(stream)
-      if stream.kind_of? ParseIO
+      if stream.kind_of? BEncode::ParseIO
         @stream = stream
       elsif stream.respond_to? :string
         @stream = StringIO.new stream.string

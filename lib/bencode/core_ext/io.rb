@@ -1,15 +1,7 @@
-require 'stringio'
-
-module ParseIO
-  def peek
-    c = self.getc
-    self.ungetc(c)
-    c
-  end
-end
+require 'bencode/parseio'
 
 class IO
-  include ParseIO
+  include BEncode::ParseIO
   
   def self.bdecode(filename)
     open(filename, 'rb') {|io| io.bdecode}
@@ -25,9 +17,5 @@ class IO
 
   def bencode
     read.chomp.bencode
-  end  
-end
-
-class StringIO
-  include ParseIO
+  end
 end
