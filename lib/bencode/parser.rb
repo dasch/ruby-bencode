@@ -68,6 +68,7 @@ module BEncode
 
       begin
         length = num.chop.to_i
+        return "" if length == 0 # Workaround for Rubinius bug
         str = stream.read(length)
       rescue
         raise BEncode::DecodeError, "invalid string length"
