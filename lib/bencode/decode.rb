@@ -19,8 +19,8 @@ module BEncode
   # @return [Object] a Ruby object
   # @raise [DecodeError] if +str+ is malformed
   def self.load(str, opts = {})
-    scanner = StringScanner.new(str)
-    obj = BEncode::Parser.parse(scanner)
+    scanner = BEncode::Parser.new(str)
+    obj = scanner.parse!
     raise BEncode::DecodeError unless (opts[:ignore_trailing_junk] || scanner.eos?)
     return obj
   end

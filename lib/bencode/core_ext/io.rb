@@ -1,5 +1,8 @@
+require 'bencode/parseio'
 
 class IO
+  include BEncode::ParseIO
+  
   def self.bdecode(filename)
     open(filename, 'rb') {|io| io.bdecode}
   end
