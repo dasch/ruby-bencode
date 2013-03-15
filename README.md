@@ -30,8 +30,18 @@ Encoding objects is as simple as calling `#bencode` on them:
 {"foo" => 1, "bar" => -10}.bencode  # => "d3:bari-10e3:fooi1ee"
 ```
 
-Decoding a data stream is as easy as calling `BEncode.load(data)`.
+Decoding a complete data stream is as easy as calling `BEncode.load(data)`.
 
+Decoding a data stream in chunks works as follows:
+
+```ruby
+irb(main):007:0> stream = BEncode::Parser.new(StringIO.new "d3:foo3:bared3:baz3:quxe")
+=> #<BEncode::Parser:0x007fbe6b008c88 @stream=#<StringIO:0x007fbe6b008cd8>>
+irb(main):008:0> stream.parse!
+=> {"foo"=>"bar"}
+irb(main):009:0> stream.parse!
+=> {"baz"=>"qux"}
+```
 
 License
 -------
