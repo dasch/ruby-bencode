@@ -9,7 +9,7 @@ class Hash
   def bencode
     pairs = sort.map{|key, val| [key.to_s.bencode, val.bencode] }
     "d#{pairs.join}e"
-  rescue NoMethodError => error
+  rescue NoMethodError
     raise BEncode::EncodeError, "dictionary keys must be strings"
   end
 end
