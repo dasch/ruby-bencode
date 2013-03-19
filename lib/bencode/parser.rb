@@ -1,12 +1,11 @@
 require 'stringio'
-require 'bencode/parseio'
 
 module BEncode
   class Parser
     attr_reader :stream
 
     def initialize(stream)
-      if stream.kind_of? BEncode::ParseIO
+      if stream.kind_of?(IO) || stream.kind_of?(StringIO)
         @stream = stream
       elsif stream.respond_to? :string
         @stream = StringIO.new stream.string
@@ -16,7 +15,7 @@ module BEncode
     end
 
     def parse!
-      case stream.peek
+      case peek
         when ?i then parse_integer!
         when ?l then parse_list!
         when ?d then parse_dict!
@@ -39,7 +38,7 @@ module BEncode
     def parse_list!
       stream.getc
       ary = []
-      ary.push(parse!) until stream.peek == ?e
+      ary.push(parse!) until peek == ?e
       stream.getc
       ary
     end
@@ -47,7 +46,7 @@ module BEncode
     def parse_dict!
       stream.getc
       hsh = {}
-      until stream.peek == ?e
+      until peek == ?e
         key = parse!
 
         unless key.is_a? String or key.is_a? Fixnum
@@ -75,6 +74,12 @@ module BEncode
       end
 
       str
+    end
+    
+    def peek
+      c = stream.getc
+      stream.ungetc(c)
+      c
     end
   end
 end
