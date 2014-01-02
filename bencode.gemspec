@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.authors = ["Daniel Schierbeck"]
   s.email = "daniel.schierbeck@gmail.com"
   s.homepage = "http://github.com/dasch/ruby-bencode"
+  s.license = 'MIT'
 
   s.require_paths = %w[lib]
 
