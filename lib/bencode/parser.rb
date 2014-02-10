@@ -5,13 +5,14 @@ module BEncode
     attr_reader :stream
 
     def initialize(stream)
-      if stream.kind_of?(IO) || stream.kind_of?(StringIO)
-        @stream = stream
-      elsif stream.respond_to? :string
-        @stream = StringIO.new stream.string
-      elsif stream.respond_to? :to_s
-        @stream = StringIO.new stream.to_s
-      end
+      @stream =
+        if stream.kind_of?(IO) || stream.kind_of?(StringIO)
+          stream
+        elsif stream.respond_to? :string
+          StringIO.new stream.string
+        elsif stream.respond_to? :to_s
+          StringIO.new stream.to_s
+        end
     end
 
     def parse!
