@@ -22,7 +22,7 @@ module BEncode
     scanner = BEncode::Parser.new(str)
     obj = scanner.parse!
     raise BEncode::DecodeError unless (opts[:ignore_trailing_junk] || scanner.eos?)
-    return obj
+    obj
   end
 
   # Decodes the file located at +path+.
@@ -32,17 +32,5 @@ module BEncode
   # @return (see .load)
   def self.load_file(path, opts = {})
     load(File.open(path, 'rb').read, opts)
-  end
-end
-
-class String
-  #
-  # Bdecodes the String object and returns the data serialized
-  # through bencoding.
-  #
-  #   "li1ei2ei3ee".bdecode   #=> [1, 2, 3]
-  #
-  def bdecode
-    BEncode.load(self)
   end
 end
