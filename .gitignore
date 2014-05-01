@@ -3,3 +3,7 @@ doc
 .idea
 Gemfile.lock
 .yardoc
+.bundle
+pkg
+tmp
+rdoc
