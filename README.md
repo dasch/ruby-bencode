@@ -1,5 +1,6 @@
 # Bencode
 
+[![Build Status](https://travis-ci.org/dasch/ruby-bencode.svg?branch=master)](https://travis-ci.org/dasch/ruby-bencode)
 This is a simple library for reading and writing bencoded data.
 
 
