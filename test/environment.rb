@@ -1,8 +1,6 @@
 require 'minitest/autorun'
 require 'shoulda'
 
-MiniTest.autorun
-
 require './lib/bencode'
 
 class MiniTest::Test
