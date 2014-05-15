@@ -1,10 +1,9 @@
+require 'bencode/version'
 
 # Support for loading and dumping bencoded data.
 #
 # See {BEncode.load} and {BEncode.dump}.
 module BEncode
-  VERSION = "0.8.0"
-
   class DecodeError < StandardError
   end
 

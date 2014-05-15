@@ -1,11 +1,10 @@
-Ruby bencode binding
-====================
+# Bencode
 
+[![Build Status](https://travis-ci.org/dasch/ruby-bencode.svg?branch=master)](https://travis-ci.org/dasch/ruby-bencode)
 This is a simple library for reading and writing bencoded data.
 
 
-What is bencode?
-----------------
+## What is bencode?
 
 Bencode is a simple data serialization format used by the popular 
 [BitTorrent](http://bittorrent.org/) P2P file sharing system.
@@ -17,9 +16,21 @@ It contains only four data types, namely:
 - lists
 - dictionaries
 
+## Installation
 
-Examples
---------
+Add this line to your application's Gemfile:
+
+    gem 'bencode'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install bencode
+
+## Usage
 
 Encoding objects is as simple as calling `#bencode` on them:
 
@@ -43,14 +54,11 @@ irb(main):009:0> stream.parse!
 => {"baz"=>"qux"}
 ```
 
-License
--------
+## License
 
 Released under the MIT license.
 
-
-Contributors
-------------
+## Contributors
 
 - Daniel Schierbeck ([dasch](https://github.com/dasch))
 - Mike Hodgson ([mikehodgson](https://github.com/mikehodgson))
@@ -59,3 +67,4 @@ Contributors
 - Allen Madsen ([blatyo](https://github.com/blatyo))
 - Ian Levesque ([ianlevesque](https://github.com/ianlevesque))
 - Dirk Geurs ([Dirklectisch](https://github.com/Dirklectisch))
+- Adrien Jarthon ([jarthod](https://github.com/jarthod))

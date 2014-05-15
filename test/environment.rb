@@ -1,12 +1,18 @@
-require 'rubygems'
-require 'bundler/setup'
-
-require 'minitest/unit'
+require 'minitest/autorun'
 require 'shoulda'
 
-MiniTest::Unit.autorun
+require './lib/bencode'
 
-require File.dirname(__FILE__) + '/../lib/bencode'
-Dir.glob(File.dirname(__FILE__) + '/shoulda_macros/*.rb').each do |macro|
-  require macro
+class MiniTest::Test
+  def self.should_decode(expected, encoded, opts = {})
+    should "decode #{encoded.inspect} into #{expected.inspect}" do
+      assert_equal expected, BEncode.load(encoded, opts)
+    end
+  end
+
+  def self.should_encode(expected, value)
+    should "encode #{value.inspect} into #{expected.inspect}" do
+      assert_equal expected, value.bencode
+    end
+  end
 end
