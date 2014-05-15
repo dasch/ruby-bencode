@@ -9,7 +9,7 @@ class String
   #   "".bencode      #=> "0:"
   #
   def bencode
-    "#{length}:#{self}"
+    "#{bytesize}:#{self}"
   end
 
   #
