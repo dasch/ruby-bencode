@@ -1,10 +1,8 @@
 # encoding: utf-8
 require 'environment'
 
-class EncodingTest < MiniTest::Unit::TestCase
-  context "The BEncode encoder" do
-    should_encode "i42e", 42
-    should_encode "3:foo", "foo"
-    should_encode "5:café", "café"
-  end
+describe "encoding" do
+  it_should_encode "i42e", 42
+  it_should_encode "3:foo", "foo"
+  it_should_encode "5:café", "café"
 end
