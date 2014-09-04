@@ -31,6 +31,8 @@ module BEncode
   # @option (see .load)
   # @return (see .load)
   def self.load_file(path, opts = {})
-    load(File.open(path, 'rb').read, opts)
+    File.open(path, 'rb') do |io|
+      load(io, opts)
+    end
   end
 end
