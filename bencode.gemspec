@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   ## If your rubyforge_project name is different, then edit it and comment out
   ## the sub! line in the Rakefile
   s.name              = 'bencode'
-  s.version           = '0.8.1'
-  s.date              = '2014-05-19'
+  s.version           = '0.8.2'
+  s.date              = '2014-09-04'
 
   s.summary = "Encode and decode bencoded data"
   s.description = "A simple encoder and decoder for the BitTorrent serialization format."
