@@ -69,7 +69,7 @@ module BEncode
       begin
         length = num.chop.to_i
         return "" if length == 0 # Workaround for Rubinius bug
-        str = stream.read(length)
+        str = stream.read(length).force_encoding(stream.external_encoding || Encoding::default_external)
       rescue
         raise BEncode::DecodeError, "invalid string length"
       end
