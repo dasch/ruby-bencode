@@ -2,7 +2,7 @@ require 'stringio'
 
 module BEncode
   class Parser
-    attr_reader :stream
+    attr_reader :stream, :encoding
 
     def initialize(stream)
       @stream =
@@ -13,6 +13,7 @@ module BEncode
         elsif stream.respond_to? :to_s
           StringIO.new stream.to_s
         end
+      @encoding = @stream.external_encoding || Encoding::default_external
     end
 
     def parse!
@@ -69,7 +70,7 @@ module BEncode
       begin
         length = num.chop.to_i
         return "" if length == 0 # Workaround for Rubinius bug
-        str = stream.read(length)
+        str = stream.read(length).force_encoding(encoding)
       rescue
         raise BEncode::DecodeError, "invalid string length"
       end

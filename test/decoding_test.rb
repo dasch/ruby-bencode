@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'environment'
 
 describe "decoding" do
@@ -14,4 +15,7 @@ describe "decoding" do
   it_should_decode hsh, "d3:foo3:bar3:baz3:quxe"
   
   it_should_decode 42, "i42eBOGUS", :ignore_trailing_junk => true
+
+  it_should_decode "café", "5:café"
+  it_should_decode ["你好", "中文"], "l6:你好6:中文e"
 end
