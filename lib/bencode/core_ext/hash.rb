@@ -7,7 +7,7 @@ class Hash
   # All keys must be strings. The keys of the bencoded hash will
   # be in lexicographical order.
   def bencode
-    pairs = sort.map{|key, val| [key.to_s.bencode, val.bencode] }
+    pairs = sort.map{|key, val| [key.to_s.bencode, val.to_s.force_encoding("UTF-8").bencode] }
     "d#{pairs.join}e"
   rescue NoMethodError
     raise BEncode::EncodeError, "dictionary keys must be strings"
