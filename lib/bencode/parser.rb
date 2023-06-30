@@ -51,7 +51,7 @@ module BEncode
       until peek == ?e
         key = parse!
 
-        unless key.is_a? String or key.is_a? Fixnum
+        unless key.is_a? String or key.is_a? Integer
           raise BEncode::DecodeError, "key must be a string or number"
         end
           
